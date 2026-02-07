@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Nani ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --pink:#ff5fa2;
+  --deep:#b31269;
+  --bg1:#ffd1e8;
+  --bg2:#fce7f3;
+  --bg3:#ffffff;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  height:100vh;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255,255,255,.9) 0, transparent 55%),
+    radial-gradient(circle at 90% 100%, rgba(255,182,193,.8) 0, transparent 55%),
+    radial-gradient(circle at top, var(--bg1), var(--bg2), var(--bg3));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  font-family:'Poppins',sans-serif;
+  perspective:1400px;
+  position:relative;
+}
+
+/* soft vignette */
+body::before{
+  content:"";
+  position:fixed;
+  inset:-60px;
+  background:radial-gradient(circle at center, transparent 40%, rgba(0,0,0,.18));
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* floating bokeh */
+.bokeh{
+  position:fixed;
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.9), transparent 60%);
+  filter:blur(6px);
+  opacity:.25;
+  animation:bokeh 18s ease-in-out infinite alternate;
+  mix-blend-mode:screen;
+}
+.b1{top:-60px;left:5%;}
+.b2{bottom:-80px;right:10%;animation-delay:4s;}
+.b3{top:30%;right:-80px;animation-delay:8s;}
+
+@keyframes bokeh{
+  0%{transform:translate3d(0,0,0) scale(.9);}
+  100%{transform:translate3d(40px,-40px,0) scale(1.1);}
+}
+
+/* glass card */
+.card{
+  width:410px;
+  min-height:440px;
+  padding:32px 30px 28px;
+  border-radius:32px;
+  background:linear-gradient(145deg, rgba(255,255,255,.55), rgba(255,255,255,.08));
+  backdrop-filter:blur(26px);
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:
+    0 26px 60px rgba(255,105,180,.35),
+    0 0 0 1px rgba(255,255,255,.45) inset;
+  text-align:center;
+  animation:enter 1.15s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+/* subtle inner glow */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at top, rgba(255,255,255,.55), transparent 55%);
+  opacity:.7;
+  mix-blend-mode:soft-light;
+  pointer-events:none;
+}
+
+/* small light streak */
+.card::after{
+  content:"";
+  position:absolute;
+  width:130%;
+  height:130%;
+  top:-80%;
+  left:-20%;
+  background:linear-gradient(120deg, rgba(255,255,255,.18), transparent 55%);
+  transform:translate3d(-60px,0,0) rotate(6deg);
+  animation:shine 7s ease-in-out infinite;
+  pointer-events:none;
+}
+
+.hidden{display:none;}
+
+h1{
+  font-family:'Playfair Display',serif;
+  color:var(--deep);
+  font-size:28px;
+  margin-bottom:16px;
+  letter-spacing:.8px;
+}
+
+p{
+  font-size:15px;
+  line-height:1.85;
+  color:#333;
+  white-space:pre-line;
+}
+
+/* tiny subtitle */
+.subtitle{
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#c2185b;
+  margin-bottom:10px;
+}
+
+/* buttons */
+.btn{
+  margin-top:24px;
+  padding:13px 34px;
+  border-radius:40px;
+  border:none;
+  background:linear-gradient(45deg,#ff5fa2,#ff9ecf,#ffd1ff);
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+  transition:.3s;
+  box-shadow:0 14px 30px rgba(255,105,180,.45);
+  position:relative;
+  overflow:hidden;
+}
+.btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 0 0, rgba(255,255,255,.7), transparent 60%);
+  opacity:0;
+  transition:.3s;
+}
+.btn:hover{
+  transform:translateY(-2px) scale(1.04);
+}
+.btn:hover::after{
+  opacity:1;
+}
+.btn:active{
+  transform:translateY(1px) scale(.98);
+  box-shadow:0 8px 20px rgba(255,105,180,.4);
+}
+
+/* rose choice style */
+.rose-choices .btn{
+  margin:10px 6px 0;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  font-size:30px;
+  padding:0;
+}
+
+/* decorative image / frame */
+.image-frame{
+  width:100%;
+  height:170px;
+  border-radius:24px;
+  margin:16px 0 18px;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.18);
+  background:radial-gradient(circle at 10% 0%, #ffe0f0, #ffc1d9, #ffdee7);
+}
+
+.image-inner{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(255,255,255,.95) 0, transparent 45%),
+    radial-gradient(circle at 90% 90%, rgba(255,182,193,.85) 0, transparent 55%),
+    linear-gradient(135deg,#ffafbd,#ffc3a0);
+  transform-origin:center;
+  animation:sway 12s ease-in-out infinite alternate;
+}
+
+.image-inner::after{
+  content:"N + You = 💖";
+  position:absolute;
+  right:14px;
+  bottom:10px;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.75);
+  color:#c2185b;
+  font-size:11px;
+  letter-spacing:.5px;
+}
+
+/* floating sparkles/hearts */
+.symbol{
+  position:absolute;
+  font-size:22px;
+  animation:float linear infinite;
+  opacity:.9;
+  pointer-events:none;
+}
+
+@keyframes float{
+  0%{transform:translateY(110vh) scale(.6) rotate(0deg);opacity:0;}
+  10%{opacity:1;}
+  100%{transform:translateY(-140vh) scale(1.15) rotate(12deg);opacity:0;}
+}
+
+/* main card enter */
+@keyframes enter{
+  from{
+    opacity:0;
+    transform:rotateX(22deg) translateY(40px) scale(.9);
+  }
+  to{
+    opacity:1;
+    transform:rotateX(0) translateY(0) scale(1);
+  }
+}
+
+/* light sweep */
+@keyframes shine{
+  0%{transform:translate3d(-80px,0,0) rotate(6deg);opacity:0;}
+  40%{opacity:.85;}
+  100%{transform:translate3d(80px,0,0) rotate(6deg);opacity:0;}
+}
+
+/* picture sway */
+@keyframes sway{
+  0%{transform:scale(1.05) translateY(6px);}
+  50%{transform:scale(1.08) translateY(-4px);}
+  100%{transform:scale(1.04) translateY(4px);}
+}
+
+/* FULL SCREEN SORRY */
+.sorry-screen{
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 10% 0%, #ffe5ec, transparent 55%),
+    radial-gradient(circle at 90% 100%, #ff8fab, #ff5fa2);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 1.5s ease;
+}
+
+/* glowing border around sorry */
+.sorry-screen::before{
+  content:"";
+  position:absolute;
+  width:78%;
+  height:68%;
+  border-radius:40px;
+  border:2px solid rgba(255,255,255,.75);
+  box-shadow:
+    0 0 30px rgba(255,255,255,.9),
+    0 0 80px rgba(255,0,102,.6);
+}
+
+/* falling petals layer */
+.petal{
+  position:fixed;
+  top:-60px;
+  width:26px;
+  height:40px;
+  background:radial-gradient(circle at 30% 20%, #ffeef6 0, #ff5fa2 40%, #c2185b 100%);
+  border-radius:60% 40% 60% 40%;
+  opacity:.92;
+  pointer-events:none;
+  filter:drop-shadow(0 6px 8px rgba(0,0,0,.25));
+  animation:petal-fall linear infinite;
+}
+.p2{animation-delay:2s;}
+.p3{animation-delay:4s;}
+.p4{animation-delay:6s;}
+
+@keyframes petal-fall{
+  0%{transform:translate3d(0,-40px,0) rotate(18deg);}
+  100%{transform:translate3d(-50px,110vh,0) rotate(260deg);}
+}
+
+.sorry-screen.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.sorry-title{
+  font-family:'Playfair Display',serif;
+  font-size:74px;
+  color:white;
+  letter-spacing:6px;
+  text-shadow:0 0 35px rgba(255,255,255,.9);
+  animation:pulse 3s ease-in-out infinite;
+  text-align:center;
+  margin-bottom:16px;
+}
+
+.heart{
+  font-size:138px;
+  filter:drop-shadow(0 24px 48px rgba(0,0,0,.35));
+  animation:beat 2.2s ease-in-out infinite;
+  margin-bottom:18px;
+}
+
+@keyframes beat{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.16);}
+}
+
+.sorry-text{
+  font-size:21px;
+  color:white;
+  text-align:center;
+  max-width:720px;
+  line-height:1.9;
+  text-shadow:0 0 20px rgba(255,255,255,.55);
+  padding:0 24px;
+}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.06);}
+}
+
+/* small helper text */
+.hint{
+  margin-top:18px;
+  font-size:12px;
+  color:#666;
+}
+
+/* responsive */
+@media (max-width:480px){
+  .card{
+    width:92vw;
+    padding:26px 20px 24px;
+  }
+  .sorry-title{
+    font-size:54px;
+  }
+  .sorry-text{
+    font-size:18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bokeh b1"></div>
+<div class="bokeh b2"></div>
+<div class="bokeh b3"></div>
+
+<audio id="bgm1" src="hello-nani.mp3" loop></audio>
+<audio id="bgm2" src="my-dear-nani.mp3" loop></audio>
+<audio id="bgm3" src="sorry-bgm.mp3" loop></audio>
+
+<!-- SCREEN 1 -->
+<div class="card" id="s1">
+  <div class="subtitle">rose day special</div>
+  <div class="image-frame">
+    <div class="image-inner"></div>
+  </div>
+  <h1>Hello Nani ❤️</h1>
+  <p>
+This Rose Day,
+I give you more than flowers—
+I give you my today,
+my tomorrow,
+and every heartbeat in between.
+  </p>
+  <button class="btn" onclick="next('s1','s2')">Next Surprise</button>
+  <div class="hint">Tap slowly, this is all for you…</div>
+</div>
+
+<!-- SCREEN 2 -->
+<div class="card hidden" id="s2">
+  <div class="subtitle">just you</div>
+  <div class="image-frame">
+    <div class="image-inner"></div>
+  </div>
+  <h1>Just One Rose 🌹</h1>
+  <p>
+I don’t need a thousand roses,
+just one—
+the one who smiles at me
+and makes my whole world feel alive.
+  </p>
+  <button class="btn" onclick="next('s2','s3')">Next Surprise</button>
+</div>
+
+<!-- SCREEN 3 -->
+<div class="card hidden" id="s3">
+  <div class="subtitle">pick your rose</div>
+  <h1>Choose Your Rose 🌹</h1>
+  <p>Every rose here is secretly you… choose one with your heart.</p>
+  <div class="rose-choices">
+    <button class="btn" onclick="openRose(1)">🌹</button>
+    <button class="btn" onclick="openRose(2)">🌹</button>
+    <button class="btn" onclick="openRose(3)">🌹</button>
+  </div>
+</div>
+
+<!-- ROSE 1 -->
+<div class="card hidden" id="r1">
+  <div class="subtitle">our story</div>
+  <div class="image-frame">
+    <div class="image-inner"></div>
+  </div>
+  <h1>From Best Friends to Love</h1>
+  <p>
+Somewhere between our jokes and late-night talks,
+you stopped being “just a friend”
+and quietly became my favorite home.
+  </p>
+  <button class="btn" onclick="finalMessage()">Continue</button>
+</div>
+
+<!-- ROSE 2 -->
+<div class="card hidden" id="r2">
+  <div class="subtitle">my choice</div>
+  <div class="image-frame">
+    <div class="image-inner"></div>
+  </div>
+  <h1>Choosing You</h1>
+  <p>
+In every version of my life,
+in every universe I can imagine,
+there is one thing that never changes—
+I find you,
+and I choose you again.
+  </p>
+  <button class="btn" onclick="finalMessage()">Continue</button>
+</div>
+
+<!-- ROSE 3 -->
+<div class="card hidden" id="r3">
+  <div class="subtitle">always you</div>
+  <div class="image-frame">
+    <div class="image-inner"></div>
+  </div>
+  <h1>Always You</h1>
+  <p>
+People say nothing lasts forever,
+but I don’t need forever.
+I just need you,
+for as long as my heart remembers how to beat.
+  </p>
+  <button class="btn" onclick="finalMessage()">Last Surprise</button>
+</div>
+
+<!-- FINAL CARD -->
+<div class="card hidden" id="final">
+  <div class="subtitle">listen once</div>
+  <div class="image-frame">
+    <div class="image-inner"></div>
+  </div>
+  <h1>My Dear Nani ❤️</h1>
+  <p>
+Maybe I make mistakes,
+maybe I don’t always say the right words,
+but my heart has always been simple:
+it only knows one direction,
+and it always runs to you.
+  </p>
+  <button class="btn" onclick="showSorry()">Tap if your heart is a little soft 💔</button>
+</div>
+
+<!-- SORRY FULL SCREEN -->
+<div class="sorry-screen" id="sorry">
+  <div class="sorry-title">SORRY<br>BANGARAM</div>
+  <div class="heart">❤️</div>
+  <div class="sorry-text">
+I’m sorry for the moments I hurt you,
+even when it was never my intention.
+You matter to me more than my ego,
+more than being “right,”
+more than any fight we could ever have.
+
+I care about you deeply,
+and I don’t want to lose
+the version of me that only exists
+when I’m with you.
+  </div>
+</div>
+
+<script>
+const bgm1 = document.getElementById("bgm1");
+const bgm2 = document.getElementById("bgm2");
+const bgm3 = document.getElementById("bgm3");
+
+window.addEventListener("click", function startOnce(){
+  bgm1.play().catch(()=>{});
+  window.removeEventListener("click", startOnce);
+});
+
+function switchCard(hideId, showId){
+  document.getElementById(hideId).classList.add("hidden");
+  const el = document.getElementById(showId);
+  el.classList.remove("hidden");
+  el.style.animation = "none";
+  void el.offsetWidth;
+  el.style.animation = "enter 1s ease";
+}
+
+function next(a,b){
+  switchCard(a,b);
+  symbols();
+}
+
+function openRose(n){
+  switchCard("s3","r"+n);
+  symbols();
+}
+
+function finalMessage(){
+  document.querySelectorAll(".card").forEach(c=>c.classList.add("hidden"));
+  const f = document.getElementById("final");
+  f.classList.remove("hidden");
+  f.style.animation = "enter 1s ease";
+  bgm1.pause();
+  bgm2.play().catch(()=>{});
+  symbols();
+}
+
+function showSorry(){
+  document.getElementById("final").classList.add("hidden");
+  const s = document.getElementById("sorry");
+  s.classList.add("show");
+  bgm2.pause();
+  bgm3.play().catch(()=>{});
+  symbols();
+  petals();
+}
+
+function symbols(){
+  document.querySelectorAll(".symbol").forEach(e=>e.remove());
+  const set = ["🦋","❤️","💖","💕","🌸","✨"];
+  for(let i=0;i<32;i++){
+    let s = document.createElement("div");
+    s.className = "symbol";
+    s.innerText = set[Math.floor(Math.random()*set.length)];
+    s.style.left = Math.random()*100 + "vw";
+    s.style.animationDuration = 7 + Math.random()*6 + "s";
+    s.style.animationDelay = Math.random()*3 + "s";
+    document.body.appendChild(s);
+  }
+}
+
+/* falling petals for sorry screen */
+function petals(){
+  document.querySelectorAll(".petal").forEach(p=>p.remove());
+  for(let i=0;i<18;i++){
+    const p = document.createElement("div");
+    p.className = "petal";
+    p.style.left = Math.random()*100 + "vw";
+    p.style.animationDuration = 8 + Math.random()*6 + "s";
+    p.style.animationDelay = Math.random()*4 + "s";
+    p.style.opacity = .7 + Math.random()*.3;
+    document.body.appendChild(p);
+  }
+}
+
+symbols();
+</script>
+
+</body>
+</html>
